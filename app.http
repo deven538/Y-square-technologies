@@ -1,0 +1,22 @@
+GET http://localhost:3000/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRldmVuIiwiaWF0IjoxNjI2MzU4NDgyfQ.8fpCbHoX4I46qqvIwI1zQnd78n763xcAspRFXjUo4K8
+###
+
+post http://localhost:3000/registration/
+Content-Type: application/json
+
+{
+    "username":"deven",
+    "email":"deven@gmail.com",
+    "password":"deven@123"
+}
+
+###
+
+post http://localhost:3000/login/
+Content-Type: application/json
+
+{
+    "username":"deven",
+    "password":"deven@123"
+}
