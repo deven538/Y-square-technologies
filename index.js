@@ -11,6 +11,8 @@ app.use(express.json());
 
 let db = null;
 
+// Establishing the connection between database and starting the server on port 3000
+
 const initializeDbAndServer = async () => {
   try {
     db = await open({
@@ -27,6 +29,8 @@ const initializeDbAndServer = async () => {
 };
 
 initializeDbAndServer();
+
+//Authenticating the user
 
 const authenticateToken = (request, response, next) => {
   let jwtToken;
@@ -49,6 +53,8 @@ const authenticateToken = (request, response, next) => {
   }
 };
 
+//User registration API
+
 app.post("/registration/", async (request, response) => {
   const { username, email, password } = request.body;
   const userChecking = `
@@ -70,6 +76,9 @@ app.post("/registration/", async (request, response) => {
     response.send("user already existed");
   }
 });
+
+
+//user LOGIN API and generating an authentication token
 
 app.post("/login/", async (request, response) => {
   const { username, password } = request.body;
@@ -95,6 +104,8 @@ app.post("/login/", async (request, response) => {
     }
   }
 });
+
+//GET users API
 
 app.get("/users/", authenticateToken, async (request, response) => {
   const { username } = request;
